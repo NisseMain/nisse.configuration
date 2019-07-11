@@ -1,0 +1,344 @@
+version: '1.0'
+
+behaviors:
+  - name: "Alert when Armed"
+    description: "Burglar alert with debounce when area armed"
+    restrictions: # Only valid for inputs
+      section: inputs
+    trigger:
+      event: "active"
+    holdon:
+      time: 1s
+    conditions:
+      - "stateof(configuration({trigger}).area).armed"
+    commands:
+      - wait.core:
+          duration: 10s
+      - alert.generate:
+          point: "Burglar"
+          
+  - name: "Motion Alert when Armed"
+    description: "Motion alert with debounce when area armed"
+    restrictions: # Only valid for inputs
+      section: motions
+    trigger:
+      event: "active"
+    holdon:
+      time: 1m
+      type: conditions
+    conditions:
+      - "stateof(configuration({trigger}).area).armed"
+    commands:
+      - alert.generate:
+          point: "Burglar"
+            
+  - name: "Alert"
+    description: "Burglar alert regardless of Arm mode"
+    restrictions: # Only valid for inputs
+      section: inputs
+    trigger:
+      event: "active"
+    holdon: 
+      time: 1s
+    commands:
+      - alert.generate:
+          point: "Burglar"
+  
+  - name: "Tamper Alert"
+    description: "Tamper alert when outside valid resistances"
+    restrictions: # Only valid for inputs
+      section: inputs
+    trigger:
+      event: "tamper"
+    holdon: 
+      time: 1s
+    commands:
+      - alert.generate:
+          point: "Tamper"
+          
+  - name: "Masked Alert"
+    description: "Masked alert when anti-masking triggered"
+    restrictions: # Only valid for inputs
+      section: inputs
+    trigger:
+      event: "masked"
+    holdon: 
+      time: 1s
+    commands:
+      - alert.generate:
+          point: "Masked"
+
+  - name: "REX"
+    description: "Input available as REX (Request to Exit/Egress) button"
+    restrictions: # Only valid for inputs
+      section: inputs
+    parameters:
+      target: ref
+    trigger:
+      event: "active"
+    holdon: 
+      time: 1s
+    commands:
+      - door.access:
+          point: "{target}"
+          
+  - name: "REX with Schedule"
+    description: "Input available as REX button according to a schedule"
+    restrictions: # Only valid for inputs
+      section: inputs
+    parameters:
+      target: ref
+      schedule: ref
+    conditions:
+      - "stateof({schedule}).active"
+    trigger:
+      event: "active"
+    holdon: 
+      time: 1s
+    commands:
+      - door.access:
+          point: "{target}"
+          
+  - name: "Activate Output on Input"
+    description: "Turn on an output"
+    restrictions: # Behavior can only be used on this service & point combination
+      service: pi_onboard
+      section: inputs
+    parameters:
+      target: ref
+    trigger:
+      event: "active"
+    holdon: 
+      time: 1s
+    conditions:
+      - "stateof({target}).command is false"  # The light mode has not been changed by command
+    commands:
+      - output.activate:
+          point: "{target}"
+          
+  - name: "Activate Output on Input with duration"
+    description: "Turn on an output for a duration"
+    restrictions: # Behavior can only be used on this service & point combination
+      service: pi_onboard
+      section: inputs
+    parameters:
+      target: ref
+      duration: duration
+    trigger:
+      event: "active"
+    holdon: 
+      time: 1s
+    conditions:
+      - "stateof({target}).command is false"  # The light mode has not been changed by command
+    commands:
+      - output.activate:
+          point: "{target}"
+      - wait:
+          duration: "{duration}"
+      - output.deactivate:
+          point: "{target}"
+          
+  - name: "Deactivate Output on Input"
+    description: "Turn off an output"
+    restrictions:
+      service: pi_onboard
+      section: inputs
+    parameters:
+      target: ref
+    trigger:
+      event: "active"
+      value: 0
+    holdon: 
+      time: 1s
+    conditions:
+      - "stateof({target}).command is false"  # The light mode has not been changed by command
+    commands:
+      - output.activate:
+          point: "{target}"
+          
+  - name: "Activate Output on Alert"
+    description: "Turn on an output"
+    restrictions:
+      section: alerts
+    parameters:
+      target: ref
+    trigger:
+      event: "active"
+    holdon: 
+      time: 1s
+    conditions:
+      - "stateof({target}).command is false"  # The light mode has not been changed by command
+    commands:
+      - output.activate:
+          point: "{target}"
+          
+  - name: "Deactivate Output on Alert"
+    description: "Turn off an output"
+    restrictions: # Behavior can only be used on this service & point combination
+        section: alerts
+    parameters:
+      target: ref
+    trigger:
+      event: "active"
+      value: 0
+    holdon: 
+      time: 1s
+    conditions:
+      - "stateof({target}).command is false"  # The light mode has not been changed by command
+    commands:
+      - output.activate:
+          point: "{target}"
+          
+  - name: "Door Ajar Alert"
+    description: "Door left open raises alert"
+    restrictions:
+      section: doors
+    parameters:
+      target: ref
+    trigger:
+      event: "open"
+    holdon: 
+      time: 10m
+    commands:
+      - alert.generate:
+          point: "Ajar"
+      
+  - name: "Activate on Schedule"
+    description: "Turn on lights according to a schedule"
+    restrictions: # Behavior can only be used on this service & point combination
+        service: pi_onboard
+        section: outputs
+    parameters:
+      point: ref
+      schedule: ref
+    conditions:
+      - "stateof({schedule}).active" # Turn lights on according to a schedule
+      - "stateof({point}).command is false"  # The light mode has not been changed by command
+    commands:
+      - output.activate:
+          point: "{point}"
+          
+  - name: "Arm on Schedule"
+    description: "Arm area according to a schedule"
+    restrictions: # Behavior can only be used on this service & point combination
+        section: areas
+    parameters:
+      point: ref
+      schedule: ref
+    conditions:
+      - "stateof({schedule}).active" # Turn lights on according to a schedule
+      - "stateof({point}).command is false"  # The light mode has not been changed by command
+    commands:
+      - area.arm:
+          point: "{point}"
+                   
+  - name: "Alert on Offline"
+    description: "Create alert when offline"
+    restrictions:
+      section: devices
+    parameters:
+      point: ref
+    trigger:
+      event: "offline"
+    holdon: 
+      time: 1m
+    commands:
+      - alert.generate:
+          point: "Communication"
+          
+  - name: "Record on Input"
+    description: "Start recording on input activate"
+    restrictions:
+      section: cameras
+    parameters:
+      point: ref
+      target: ref
+    commands:
+      - camera.record:
+          point: "{point}"
+          duration: 1m
+          
+  - name: "Record on Motion"
+    description: "Start recording on motion detect"
+    restrictions:
+      section: cameras
+    parameters:
+      point: ref # TODO: Do we need to specify a point, or can this parameter be assumed?
+    commands:
+      - camera.record:
+          point: "{point}"
+          duration: 1m
+          
+  - name: "Grant Access to Door"
+    description: "When a valid card is swipe a door opens"
+    restrictions:
+      section: readers
+    parameters:
+      door: ref # TODO: Do we need to specify a point, or can this parameter be assumed?
+    trigger:
+      event: "reader.insert"
+    commands:
+      - door.singleaccess:
+          point: "{door}"
+          result: "hasrole({user}, access)" # So that the door can return "Access Denied"
+          
+  - name: "Grant Access to Door (Custom)"
+    description: "When a valid card is swipe a door opens"
+    restrictions:
+      section: readers
+    parameters:
+      door: ref
+      role: role
+    trigger:
+      event: "reader.insert"
+      point: "{reader_name}"
+    conditions:
+      - "hasrole({user}, {role})"
+    commands:
+      - door.singleaccess:
+          point: "{door}"
+          result: "hasrole({user}, {role})" # So that the door can return "Access Denied"
+
+  - name: "Cube adjusts brightness"
+    description: "Cube controls light brightness"
+    restrictions:
+      section: cube
+    parameters:
+      light_name: ref
+    trigger:
+      event: "rotate"
+    commands:
+      - light.brightness:
+          point: "{light_name}"
+          change: "{trigger_value}"
+          
+  - name: "Activate Plug on Button with duration"
+    description: "On a button press, turn on an plug (socket) for a fixed duration"
+    restrictions: # Behavior can only be used on this service & point combination
+      section: buttons
+    parameters:
+      socket_name: ref
+      duration: duration
+    trigger:
+      event: "click"
+    commands:
+      - output.activate:
+          point: "{socket_name}"
+      - wait:
+          duration: "{duration}"
+      - output.deactivate:
+          point: "{socket_name}"
+
+  - name: "Light follows light"
+    description: "Turn on lights together"
+    restrictions:
+      section: light
+    parameters:
+      light_name: ref
+    trigger:
+      event: "active"
+      value: true
+    commands:
+      - light.activate:
+          point: "{light_name}"
+          

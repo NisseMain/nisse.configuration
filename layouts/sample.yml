@@ -1,0 +1,10 @@
+version: '1.0'
+
+cards:
+  - map_card:
+     title: ''
+     width: 2cols
+     height: 100px
+	 latitude: 33.000
+	 longditude: -107.00
+	 

@@ -1,0 +1,12 @@
+version: '1.0'
+      
+users:
+  - name: "Eugene"
+    email: escully@gmail.com
+    credentials:
+    - bluetooth: "A4:07:B6:DB:9C:D7"
+    roles:
+    - configure
+    - access
+  - name: "Ted"
+    email: ted@gmail.com
