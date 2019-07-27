@@ -8,5 +8,24 @@ users:
     roles:
     - configure
     - access
+  - name: "Alena"
+    email: alena@gmail.com
+    roles:
+    - access
+  - name: "Sean"
+    roles:
+    - access
+  - name: "Oliver"
+    roles:
+    - access
+  - name: "Tim"
+    roles:
+    - access
+  - name: "Anitra"
+    roles:
+    - access
+  - name: "Mr. Whiskers"
+  - name: "Gold"
+  - name: "Algae"
   - name: "Ted"
     email: ted@gmail.com
