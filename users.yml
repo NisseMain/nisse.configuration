@@ -1,31 +1,61 @@
-version: '1.0'
-      
+version: 1.0
 users:
-  - name: "Eugene"
+  - name: Eugene
     email: escully@gmail.com
+    image: man_5
     credentials:
-    - bluetooth: "A4:07:B6:DB:9C:D7"
+    - bluetooth: 00:AA:BB:CC:DD:EE
+    - bluetooth: Type
     roles:
+    - access
     - configure
-    - access
-  - name: "Alena"
+  - name: Alena
     email: alena@gmail.com
+    image: girl_1
+    credentials: []
     roles:
     - access
-  - name: "Sean"
+  - name: Sean
+    email: ''
+    image: boy_1
+    credentials: []
     roles:
     - access
-  - name: "Oliver"
+  - name: Oliver
+    email: ''
+    image: boy_2
+    credentials: []
     roles:
     - access
-  - name: "Tim"
+  - name: Tim
+    email: ''
+    image: man_2
+    credentials: []
     roles:
     - access
-  - name: "Anitra"
+  - name: Anitra
+    email: ''
+    image: girl_2
+    credentials: []
     roles:
     - access
-  - name: "Mr. Whiskers"
-  - name: "Gold"
-  - name: "Algae"
-  - name: "Ted"
+  - name: Mr. Whiskers
+    email: ''
+    image: man_1
+    credentials: []
+    roles: []
+  - name: Gold
+    email: ''
+    image: man_3
+    credentials: []
+    roles: []
+  - name: Algae
+    email: ''
+    image: boy_1
+    credentials: []
+    roles: []
+  - name: Ted
     email: ted@gmail.com
+    image: man_4
+    credentials: []
+    roles: []
