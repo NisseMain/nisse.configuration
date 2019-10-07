@@ -2,7 +2,7 @@ version: 1.0
 users:
 - name: Eugene Scully
   email: escully@gmail.com
-  image: man_5
+  image: man_2
   credentials:
   - bluetooth: 00:AA:BB:CC:DD:EE
   - bluetooth: Type
