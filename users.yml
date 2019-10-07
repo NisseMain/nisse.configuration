@@ -1,61 +1,66 @@
 version: 1.0
 users:
-  - name: Eugene
-    email: escully@gmail.com
-    image: man_5
-    credentials:
-    - bluetooth: 00:AA:BB:CC:DD:EE
-    - bluetooth: Type
-    roles:
-    - access
-    - configure
-  - name: Alena
-    email: alena@gmail.com
-    image: girl_1
-    credentials: []
-    roles:
-    - access
-  - name: Sean
-    email: ''
-    image: boy_1
-    credentials: []
-    roles:
-    - access
-  - name: Oliver
-    email: ''
-    image: boy_2
-    credentials: []
-    roles:
-    - access
-  - name: Tim
-    email: ''
-    image: man_2
-    credentials: []
-    roles:
-    - access
-  - name: Anitra
-    email: ''
-    image: girl_2
-    credentials: []
-    roles:
-    - access
-  - name: Mr. Whiskers
-    email: ''
-    image: man_1
-    credentials: []
-    roles: []
-  - name: Gold
-    email: ''
-    image: man_3
-    credentials: []
-    roles: []
-  - name: Algae
-    email: ''
-    image: boy_1
-    credentials: []
-    roles: []
-  - name: Ted
-    email: ted@gmail.com
-    image: man_4
-    credentials: []
-    roles: []
+- name: Eugene Scully
+  email: escully@gmail.com
+  image: man_5
+  credentials:
+  - bluetooth: 00:AA:BB:CC:DD:EE
+  - bluetooth: Type
+  roles:
+  - access
+  - configure
+- name: Alena
+  email: alena@gmail.com
+  image: girl_1
+  credentials: []
+  roles:
+  - access
+- name: Sean
+  email: ''
+  image: boy_1
+  credentials: []
+  roles:
+  - access
+- name: Oliver
+  email: ''
+  image: boy_2
+  credentials: []
+  roles:
+  - access
+- name: Tim
+  email: ''
+  image: man_2
+  credentials: []
+  roles:
+  - access
+- name: Anitra
+  email: ''
+  image: girl_2
+  credentials: []
+  roles:
+  - access
+- name: Mr. Whiskers
+  email: ''
+  image: man_1
+  credentials: []
+  roles: []
+- name: Gold
+  email: ''
+  image: man_3
+  credentials: []
+  roles: []
+- name: Algae
+  email: ''
+  image: boy_2
+  credentials: []
+  roles: []
+- name: Ted
+  email: ted@gmail.com
+  image: man_4
+  credentials: []
+  roles: []
+- name: Test
+  email: test@gmail.com
+  image: boy_2
+  credentials: []
+  roles: []
