@@ -1,9 +1,8 @@
 version: 1.0
-
 sites:
 - name: Headquarters
   configuration: default
   tags: []
-- name: "My house"
+- name: My house2
   configuration: home
   tags: []
