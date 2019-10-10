@@ -1,6 +1,6 @@
 version: 1.0
 users:
-- name: Eugene Scully
+- name: Eugene
   email: escully@gmail.com
   image: man_2
   credentials:
