@@ -28,7 +28,7 @@ users:
   roles:
   - access
 - name: Tim
-  email: ''
+  email: tima@gmail.com
   image: man_2
   credentials: []
   roles:
