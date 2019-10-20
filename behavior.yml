@@ -2,7 +2,7 @@ version: '1.0'
 
 behaviors:
   - name: "Alert when Armed"
-    description: "Burglar alert with debounce when area armed"
+    description: "Burglar alert with debounce when area armed 2"
     restrictions: # Only valid for inputs
       section: inputs
     trigger:
