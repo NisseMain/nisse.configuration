@@ -1,4 +1,4 @@
-version: '1.0j'
+version: '1.0'
 
 behaviors:
   - name: "Alert when Armed"
