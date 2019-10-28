@@ -64,3 +64,18 @@ users:
   image: boy_2
   credentials: []
   roles: []
+- name: New User2
+  email: ''
+  image: man_1
+  credentials: []
+  roles: []
+- name: New User
+  email: ''
+  image: man_1
+  credentials: []
+  roles: []
+- name: New User 1
+  email: ''
+  image: man_1
+  credentials: []
+  roles: []
