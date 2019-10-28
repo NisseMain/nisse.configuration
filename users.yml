@@ -59,23 +59,8 @@ users:
   image: man_4
   credentials: []
   roles: []
-- name: Testa
+- name: Test a
   email: test@gmail.com
   image: boy_2
-  credentials: []
-  roles: []
-- name: New User2
-  email: ''
-  image: man_1
-  credentials: []
-  roles: []
-- name: New User
-  email: ''
-  image: man_1
-  credentials: []
-  roles: []
-- name: New User 1
-  email: ''
-  image: man_1
   credentials: []
   roles: []
