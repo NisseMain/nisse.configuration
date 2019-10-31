@@ -5,7 +5,7 @@ services:
     image: nisse/hid_reader:1.0
     configuration:
       readers:
-      - name: Lego Dimensions 5
+      - name: Lego Dimensions
         area: Office
         behaviors: []
         type: lego
@@ -158,6 +158,46 @@ services:
         behaviors: []
         Entry Delay: 0s
         Exit Delay: 0s
+      - name: Office
+        area: Office
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
+      - name: Kitchen
+        area: Kitchen
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
+      - name: Hall
+        area: Hall
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
+      - name: Main Area
+        area: Main Area
+        behaviors: []
+        Entry Delay: 0d 0h 0m 30s
+        Exit Delay: 0d 0h 0m 30s
+      - name: Office
+        area: Office
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
+      - name: Kitchen
+        area: Kitchen
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
+      - name: Hall
+        area: Hall
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
+      - name: Main Area
+        area: Main Area
+        behaviors: []
+        Entry Delay: 0d 0h 0m 30s
+        Exit Delay: 0d 0h 0m 30s
       - name: Office
         area: Office
         behaviors: []
