@@ -5,8 +5,9 @@ services:
     image: nisse/hid_reader:1.0
     configuration:
       readers:
-      - name: Lego Dimensions
+      - name: Lego Dimensions 5
         area: Office
+        behaviors: []
         type: lego
   pi_onboard:
     image: nisse/pi_onboard:1.0
@@ -128,6 +129,50 @@ services:
       - name: Hall Light
         area: Main Area
         behaviors: []
+  areas:
+    image: _content/Nisse.Common.Web/icons/disarmed_transp.png
+    configuration:
+      areas:
+      - name: Main Area
+        area: Main Area
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
+      - name: Office
+        area: Office
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
+      - name: Kitchen
+        area: Kitchen
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
+      - name: Hall
+        area: Hall
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
+      - name: Main Area
+        area: Main Area
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
+      - name: Office
+        area: Office
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
+      - name: Kitchen
+        area: Kitchen
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
+      - name: Hall
+        area: Hall
+        behaviors: []
+        Entry Delay: 0s
+        Exit Delay: 0s
 schedules:
 - name: 9 to 5
   monday:
