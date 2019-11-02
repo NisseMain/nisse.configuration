@@ -5,7 +5,11 @@ services:
     image: nisse/hid_reader:1.0
     configuration:
       readers:
-      - name: Lego Dimensions 3
+      - name: Lego Dimensions 1
+        area: Office
+        behaviors: []
+        type: lego
+      - name: Lego Dimensions 2
         area: Office
         behaviors: []
         type: lego
