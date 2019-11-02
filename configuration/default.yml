@@ -9,10 +9,6 @@ services:
         area: Office
         behaviors: []
         type: lego
-      - name: Lego Dimensions 2
-        area: Office
-        behaviors: []
-        type: lego
   pi_onboard:
     image: nisse/pi_onboard:1.0
     configuration:
