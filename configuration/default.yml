@@ -5,7 +5,7 @@ services:
     image: nisse/hid_reader:1.0
     configuration:
       readers:
-      - name: Lego Dimensions 2
+      - name: Lego Dimensions 3
         area: Office
         behaviors: []
         type: lego
@@ -129,34 +129,23 @@ services:
       - name: Hall Light
         area: Main Area
         behaviors: []
-  
 schedules:
 - name: 9 to 5
-  monday:
-  - 9:0 to 17:0
-  tuesday:
-  - 9:0 to 17:0
-  wednesday:
-  - 9:0 to 17:0
-  thursday:
-  - 9:0 to 17:0
-  friday:
-  - 9:0 to 17:0
-  saturday:
-  - 9:0 to 17:0
-  sunday:
-  - 9:0 to 17:0
-  holiday1:
-  - 9:0 to 17:0
-  holiday2:
-  - 9:0 to 17:0
-  holiday3:
-  - 9:0 to 17:0
+  monday: []
+  tuesday: []
+  wednesday: []
+  thursday: []
+  friday: []
+  saturday: []
+  sunday: []
+  holiday1: []
+  holiday2: []
+  holiday3: []
 timers: 
 areas:
 - name: Main Area
-  entry_delay: 0d30s
-  exit_delay: 0d30s
+  entry_delay: ''
+  exit_delay: ''
 - name: Office
   entry_delay: ''
   exit_delay: ''
