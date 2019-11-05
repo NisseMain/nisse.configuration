@@ -1,7 +1,7 @@
 version: 1.0
 sites:
 - name: Headquarters
-  configuration: default
+  configuration: site.Headquarters
   tags: []
 - name: My house 2
   configuration: home
