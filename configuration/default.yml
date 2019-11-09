@@ -132,8 +132,8 @@ services:
 schedules:
 - name: 9 to 5
   monday: 6:00 to 12:00
-  tuesday: []
-  wednesday: []
+  tuesday: 6:00 to 13:00
+  wednesday: 6:00 to 12:00
   thursday: []
   friday: []
   saturday: []
