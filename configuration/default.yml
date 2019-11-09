@@ -131,7 +131,7 @@ services:
         behaviors: []
 schedules:
 - name: 9 to 5
-  monday: []
+  monday: 6:00 to 12:00
   tuesday: []
   wednesday: []
   thursday: []
