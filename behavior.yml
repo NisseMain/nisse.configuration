@@ -73,7 +73,7 @@ behaviors:
     restrictions: # Only valid for inputs
       section: inputs
     parameters:
-      target: ref
+      target: doors
     trigger:
       event: "active"
     holdon: 
@@ -87,8 +87,8 @@ behaviors:
     restrictions: # Only valid for inputs
       section: inputs
     parameters:
-      target: ref
-      schedule: ref
+      target: doors
+      schedule: schedules
     conditions:
       - "stateof({schedule}).active"
     trigger:
@@ -105,7 +105,7 @@ behaviors:
       service: pi_onboard
       section: inputs
     parameters:
-      target: ref
+      target: outputs
     trigger:
       event: "active"
     holdon: 
@@ -122,7 +122,7 @@ behaviors:
       service: pi_onboard
       section: inputs
     parameters:
-      target: ref
+      target: outputs
       duration: duration
     trigger:
       event: "active"
@@ -144,7 +144,7 @@ behaviors:
       service: pi_onboard
       section: inputs
     parameters:
-      target: ref
+      target: outputs
     trigger:
       event: "active"
       value: 0
@@ -161,7 +161,7 @@ behaviors:
     restrictions:
       section: alerts
     parameters:
-      target: ref
+      target: outputs
     trigger:
       event: "active"
     holdon: 
@@ -177,7 +177,7 @@ behaviors:
     restrictions: # Behavior can only be used on this service & point combination
         section: alerts
     parameters:
-      target: ref
+      target: outputs
     trigger:
       event: "active"
       value: 0
@@ -193,8 +193,6 @@ behaviors:
     description: "Door left open raises alert"
     restrictions:
       section: doors
-    parameters:
-      target: ref
     trigger:
       event: "open"
     holdon: 
@@ -209,8 +207,8 @@ behaviors:
         service: pi_onboard
         section: outputs
     parameters:
-      point: ref
-      schedule: ref
+      point: bulbs
+      schedule: schedules
     conditions:
       - "stateof({schedule}).active" # Turn lights on according to a schedule
       - "stateof({point}).command is false"  # The light mode has not been changed by command
@@ -223,8 +221,8 @@ behaviors:
     restrictions: # Behavior can only be used on this service & point combination
         section: areas
     parameters:
-      point: ref
-      schedule: ref
+      point: areas
+      schedule: schedules
     conditions:
       - "stateof({schedule}).active" # Turn lights on according to a schedule
       - "stateof({point}).command is false"  # The light mode has not been changed by command
@@ -236,8 +234,6 @@ behaviors:
     description: "Create alert when offline"
     restrictions:
       section: devices
-    parameters:
-      point: ref
     trigger:
       event: "offline"
     holdon: 
@@ -251,8 +247,7 @@ behaviors:
     restrictions:
       section: cameras
     parameters:
-      point: ref
-      target: ref
+      point: cameras
     commands:
       - camera.record:
           point: "{point}"
@@ -263,7 +258,7 @@ behaviors:
     restrictions:
       section: cameras
     parameters:
-      point: ref # TODO: Do we need to specify a point, or can this parameter be assumed?
+      point: cameras # TODO: Do we need to specify a point, or can this parameter be assumed?
     commands:
       - camera.record:
           point: "{point}"
@@ -274,7 +269,7 @@ behaviors:
     restrictions:
       section: readers
     parameters:
-      door: ref # TODO: Do we need to specify a point, or can this parameter be assumed?
+      door: doors # TODO: Do we need to specify a point, or can this parameter be assumed?
     trigger:
       event: "reader.insert"
     commands:
@@ -287,24 +282,24 @@ behaviors:
     restrictions:
       section: readers
     parameters:
-      door: ref
-      role: role
+      door: doors
+      role: roles
     trigger:
       event: "reader.insert"
       point: "{reader_name}"
     conditions:
-      - "hasrole({user}, {role})"
+      - "hasrole({user}, {roles})"
     commands:
       - door.singleaccess:
           point: "{door}"
-          result: "hasrole({user}, {role})" # So that the door can return "Access Denied"
+          result: "hasrole({user}, {roles})" # So that the door can return "Access Denied"
 
   - name: "Cube adjusts brightness"
     description: "Cube controls light brightness"
     restrictions:
       section: cube
     parameters:
-      light_name: ref
+      light_name: bulbs
     trigger:
       event: "rotate"
     commands:
@@ -317,7 +312,7 @@ behaviors:
     restrictions: # Behavior can only be used on this service & point combination
       section: buttons
     parameters:
-      socket_name: ref
+      socket_name: plugs
       duration: duration
     trigger:
       event: "click"
@@ -334,7 +329,7 @@ behaviors:
     restrictions:
       section: light
     parameters:
-      light_name: ref
+      light_name: bulbs
     trigger:
       event: "active"
       value: true
