@@ -158,7 +158,6 @@ services:
         holiday1: []
         holiday2: []
         holiday3: []
-      timers: 
       areas:
       - name: Main Area
         entry_delay: 0d30s
