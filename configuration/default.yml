@@ -1,5 +1,7 @@
 version: 1.0
 image: ''
+include:
+  - shared
 services:
   hid_reader:
     image: nisse/hid_reader:1.0
