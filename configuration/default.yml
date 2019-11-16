@@ -131,8 +131,8 @@ services:
         behaviors: []
   core:
     image: nisse/core:1.0
-    configuration
-    schedules:
+    configuration:
+      schedules:
       - name: 9 to 5
         monday:
         - 6:30 to 12:0
