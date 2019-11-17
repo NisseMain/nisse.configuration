@@ -149,17 +149,6 @@ services:
         holiday1: []
         holiday2: []
         holiday3: []
-      - name: New Schedule
-        monday: []
-        tuesday: []
-        wednesday: []
-        thursday: []
-        friday: []
-        saturday: []
-        sunday: []
-        holiday1: []
-        holiday2: []
-        holiday3: []
       areas:
       - name: Main Area
         entry_delay: 0d30s
@@ -174,12 +163,6 @@ services:
         entry_delay: 0d30s
         exit_delay: 0d30s
       alerts:
-      - name: Burglar
-        priority: 20
-      - name: Communication
+      - name: Test
         priority: 0
-      - name: Fault
-        priority: 10
-      - name: Ajar
-        priority: 5
  
