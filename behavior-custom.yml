@@ -1,0 +1,18 @@
+version: '1.0'
+
+behaviors:
+  - name: "Test Custom Behavior"
+    description: "Burglar alert with debounce when area armed 2"
+    restrictions: # Only valid for inputs
+      section: inputs
+    trigger:
+      event: "active"
+    holdon:
+      time: 1s
+    conditions:
+      - "stateof(configuration({trigger}).area).armed"
+    commands:
+      - wait.core:
+          duration: 10s
+      - alert.generate:
+          point: "Burglar"
