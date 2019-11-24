@@ -1,179 +1,168 @@
-version: '1.0'
-
+version: 1.0
+image: ''
+include:
+  - shared
 services:
-  # Raspberry PI onboard I/O
-  pi_onboard:
-    image: nisse/pi_onboard:1.0
-    configuration:
-      inputs:
-        - name: "Main Entry PIR"
-          area: "Main Area"
-          resistance_alarm: 5000
-          resistance_bias: 5000
-          resistance_tamper: 10000
-          tolerance: 2
-          behaviors:
-          - name: "Alert when Armed"
-        - name: "Backroom PIR"
-          area: "Main Area"
-          resistance_alarm: 5000
-          resistance_bias: 5000
-          resistance_tamper: 10000
-          tolerance: 2
-          behaviors:
-          - name: "Alert when Armed"
-      outputs:
-        - name: "Front Siren"
-          area: "Main Area"
-        - name: "Entry Lights"
-          area: "Main Area"
-          behaviors:
-          - name: "Activate on Schedule"
-            schedule: "9 to 5"
-      device:
-        - name: "Local Device"
-          area: "Main Area"
-          behaviors:
-          - name: "Alert on Offline"
-
-  yeelight:
-    image: nisse/yeelight:1.0
-    configuration:
-      lights:
-        - name: "Office Light"
-          area: Office
-          address: "192.168.86.238"
-          
-  xiaomi:
-    image: nisse/xiaomi:1.0
-    configuration:
-      gateways:
-        - name: Gateway
-          area: Hall
-          address: "192.168.86.209"
-          password: "hmazr7ncow2yj6oq"
-      plugs:
-        - name: "Coffee Machine"
-          area: Kitchen
-          sid: 158d000171790b
-      doors:
-        - name: "Front Door Sensor"
-          area: Kitchen
-          sid: 158d0001d7ad8c
-        - name: "Rear Door Sensor"
-          area: Hall
-          sid: 158d000120ed10
-      buttons:
-        - name: "Office Button"
-          area: Office
-          sid: 158d000186eebe
-        - name: "Coffee Machine Button"
-          area: Kitchen
-          sid: 158d00012248d3
-      motions:
-        - name: "Office Sensor v1"
-          area: Office
-          sid: 158d0001228d59
-          type: "motion"
-        - name: "Hall Sensor v2"
-          area: Hall
-          sid: 158d0001660e01
-          type: "sensor_motion.aq2"
-      cubes:
-        - name: "Input Cube"
-          area: Office
-          sid: 158d000289e45b
-          behaviors:
-          - name: "Cube adjusts brightness"
-            light_name: "Office Light"
-            
   hid_reader:
     image: nisse/hid_reader:1.0
     configuration:
       readers:
-        - name: "Lego Portal"
-          type: lego
-          area: "Main Area"
-          #areas: 
-          #  - "Main Area"
-          #  - "House"
-          
-  bluetooth:
-    image: nisse/bluetooth:1.0
+      - name: Lego Dimensions
+        area: Office
+        behaviors: []
+        type: lego
+  pi_onboard:
+    image: nisse/pi_onboard:1.0
     configuration:
-      beacons:
-        - name: "Bluetooth Beacon"
-          area: "Main Area"
-
-  # Axis Door Controller
+      inputs:
+      - name: Main Entry PIR
+        area: Main Area
+        behaviors:
+        - name: Alert when Armed
+        resistance_alarm: 5000
+        resistance_bias: 5000
+        resistance_tamper: 10000
+        tolerance: 2
+      - name: Backroom PIR
+        area: Main Area
+        behaviors:
+        - name: Alert when Armed
+        resistance_alarm: 5000
+        resistance_bias: 5000
+        resistance_tamper: 10000
+        tolerance: 2
+      outputs:
+      - name: Front Siren 2
+        area: Main Area
+        behaviors: []
+      - name: Entry Lights
+        area: Main Area
+        behaviors:
+        - schedule: 9 to 5
+          name: Activate on Schedule
+      device:
+      - name: Local Device
+        area: Main Area
+        behaviors:
+        - name: Alert on Offline
+  yeelight:
+    image: nisse/yeelight:1.0
+    configuration:
+      lights:
+      - name: Office Light
+        area: Office
+        behaviors: []
+        address: 192.168.86.238
+  xiaomi:
+    image: nisse/xiaomi:1.0
+    configuration:
+      gateways:
+      - name: Gateway
+        area: Hall
+        behaviors: []
+        address: 192.168.86.209
+        password: hmazr7ncow2yj6oq
+      plugs:
+      - name: Coffee Machine
+        area: Kitchen
+        behaviors: []
+        sid: 158d000171790b
+      doors:
+      - name: Front Door Sensor
+        area: Kitchen
+        behaviors: []
+        sid: 158d0001d7ad8c
+      - name: Rear Door Sensor
+        area: Hall
+        behaviors: []
+        sid: 158d000120ed10
+      buttons:
+      - name: Office Button
+        area: Office
+        behaviors: []
+        sid: 158d000186eebe
+      - name: Coffee Machine Button
+        area: Kitchen
+        behaviors: []
+        sid: 158d00012248d3
+      motions:
+      - name: Office Sensor v1
+        area: Office
+        behaviors: []
+        sid: 158d0001228d59
+        type: motion
+      - name: Hall Sensor v2
+        area: Hall
+        behaviors: []
+        sid: 158d0001660e01
+        type: sensor_motion.aq2
+      cubes:
+      - name: Input Cube
+        area: Office
+        behaviors:
+        - light_name: Office Light
+          name: Cube adjusts brightness
+        sid: 158d000289e45b
   axis_doorcontroller:
     image: nisse/axis_doorcontroller:1.0
     configuration:
       doors:
-        - name: "Front Door"
-          area: "Main Area"
-          strike_time: 10s
-          enable_ajar: yes
-          enable_forced: yes
-        - name: "Back Door"
-          area: "Main Area"
-          strike_time: 10s
+      - name: Front Door
+        area: Main Area
+        behaviors: []
+        strike_time: 10s
+        enable_ajar: yes
+        enable_forced: yes
+      - name: Back Door
+        area: Main Area
+        behaviors: []
+        strike_time: 10s
       readers:
-        - name: "Reader - Front Door Outside"
-          area: "Main Area"
-          
-  # Virtual Points
+      - name: Reader - Front Door Outside
+        area: Main Area
+        behaviors: []
   virtual:
     image: nisse/virtual:1.0
     configuration:
       lights:
-        - name: "Living Room Light"
-          area: "Main Area"
-        - name: "Hall Light"
-          area: "Main Area"
-          
-timers:
-  - name: "Lights timer"
-  - name: "Coffee Machine Timer"
-      
-areas:
-  - name: "Main Area"
-    entry_delay: 30s
-    exit_delay: 30s
-  - name: "Office"
-  - name: "Kitchen"
-  - name: "Hall"
+      - name: Living Room Light
+        area: Main Area
+        behaviors: []
+      - name: Hall Light
+        area: Main Area
+        behaviors: []
+  core:
+    image: nisse/core:1.0
+    configuration:
+      schedules:
+      - name: 9 to 5
+        monday:
+        - 6:30 to 12:0
+        tuesday:
+        - 6:0 to 13:0
+        wednesday:
+        - 6:0 to 12:0
+        thursday: []
+        friday: []
+        saturday: []
+        sunday: []
+        holiday1: []
+        holiday2: []
+        holiday3: []
+      areas:
+      - name: Main Area
+        entry_delay: 0d30s
+        exit_delay: 0d30s
+      - name: Office
+        entry_delay: 0d30s
+        exit_delay: 0d30s
+      - name: Kitchen
+        entry_delay: 0d30s
+        exit_delay: 0d30s
+      - name: Hall
+        entry_delay: 0d30s
+        exit_delay: 0d30s
+      alerts:
+      - name: Test
+        priority: 0
  
-schedules:
-  - name: "9 to 5"
-    monday:
-      - "9:00 to 17:00"
-    tuesday:
-      - "9:00 to 17:00"
-    wednesday:
-      - "9:00 to 17:00"
-    thursday:
-      - "9:00 to 17:00"
-    friday:
-      - "9:00 to 17:00"
-    saturday:
-      - "9:00 to 17:00"
-    sunday:
-      - "9:00 to 17:00"
-    holiday1:
-      - "9:00 to 17:00"
-    holiday2:
-      - "9:00 to 17:00"
-    holiday3:
-      - "9:00 to 17:00"
-
-alerts:
-  - name: "Burglar"
-    priority: 20
-  - name: "Communication"
-    priority: 
-  - name: "Fault"
-    priority: 10
-  - name: "Ajar"
-    priority: 5
-
