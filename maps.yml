@@ -2,7 +2,7 @@ version: 1.0
 maps:
 - name: default
   text: Overview
-  image: floorplan1.jpg
+  image: floorplan.jpg
   width: 1406
   height: 648
   points:
