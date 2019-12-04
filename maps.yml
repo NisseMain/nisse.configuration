@@ -3,6 +3,8 @@ maps:
 - name: default
   text: Overview
   image: floorplan1.jpg
+  width: 1406
+  height: 648
   points:
     - name: Virtual Light 1
       site: Home
@@ -21,6 +23,8 @@ maps:
 - name: floor1
   text: Ground Floor
   image: floorplan2.jpg
+  width: 1406
+  height: 648
   points:
     - name: Virtual Light 1
       site: Home
