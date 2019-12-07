@@ -103,24 +103,6 @@ services:
         - light_name: Office Light
           name: Cube adjusts brightness
         sid: 158d000289e45b
-  axis_doorcontroller:
-    image: nisse/axis_doorcontroller:1.0
-    configuration:
-      doors:
-      - name: Front Door
-        area: Main Area
-        behaviors: []
-        strike_time: 10s
-        enable_ajar: yes
-        enable_forced: yes
-      - name: Back Door
-        area: Main Area
-        behaviors: []
-        strike_time: 10s
-      readers:
-      - name: Reader - Front Door Outside
-        area: Main Area
-        behaviors: []
   virtual:
     image: nisse/virtual:1.0
     configuration:
