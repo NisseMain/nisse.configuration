@@ -6,12 +6,12 @@ maps:
   width: 1406
   height: 648
   points:
-    - name: Virtual Light 1
-      site: Home
+    - name: Office Light
+      site: Headquarters
       x: 100
       y: 102
-    - name: Virtual Light 2
-      site: Home
+    - name: Coffee Machine
+      site: Headquarters
       x: 205
       y: 102
   links:
