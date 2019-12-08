@@ -8,12 +8,12 @@ maps:
   points:
     - name: Office Light
       site: Headquarters
-      x: 100
-      y: 102
+      x: 1064
+      y: 538
     - name: Coffee Machine
       site: Headquarters
-      x: 205
-      y: 102
+      x: 278
+      y: 104
   links:
     - name: floor1
       icon: Overview.png
