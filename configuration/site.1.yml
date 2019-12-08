@@ -14,32 +14,6 @@ services:
   pi_onboard:
     image: nisse/pi_onboard:1.0
     configuration:
-      inputs:
-      - name: Main Entry PIR
-        area: Main Area
-        behaviors:
-        - name: Alert when Armed
-        resistance_alarm: 5000
-        resistance_bias: 5000
-        resistance_tamper: 10000
-        tolerance: 2
-      - name: Backroom PIR
-        area: Main Area
-        behaviors:
-        - name: Alert when Armed
-        resistance_alarm: 5000
-        resistance_bias: 5000
-        resistance_tamper: 10000
-        tolerance: 2
-      outputs:
-      - name: Front Siren 2
-        area: Main Area
-        behaviors: []
-      - name: Entry Lights
-        area: Main Area
-        behaviors:
-        - schedule: 9 to 5
-          name: Activate on Schedule
       device:
       - name: Local Device
         area: Main Area
