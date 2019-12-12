@@ -2,9 +2,11 @@ version: 1.0
 sites:
 - name: Headquarters
   id: 1
+  icon: office
   configuration: site.Headquarters
   tags: []
 - name: My house 2
   id: 2
+  icon: house2
   configuration: home
   tags: []
